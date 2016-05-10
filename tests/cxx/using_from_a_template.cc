@@ -18,7 +18,20 @@
 //
 // This tests that logic.
 
-class IndirectlyUsedFromATemplate
+#include "tests/cxx/using_from_a_template-t.h"
+#include "tests/cxx/using_from_a_template-o.h"
+
+class Class : public Template<Object>
 {
-    int a;
+    // If the function is called - it is tracked correctly
+    // void bar() {
+    //     Template<Object>::foo();
+    // }
+    
+    // But when the function is made visible with using - it is not
+    using Template<Object>::foo;
 };
+
+
+/**** IWYU_SUMMARY
+***** IWYU_SUMMARY */

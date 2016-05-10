@@ -18,29 +18,6 @@
 //
 // This tests that logic.
 
-#include "tests/cxx/indirect_from_a_template.h"
-
-template<typename T>
-class Template
+class Object
 {
-public:
-    typedef T Type;
 };
-
-template<typename T>
-class Test
-{
-public:
-    typedef Template<T> Instance;
-    
-    void foo();
-};
-
-template<typename T>
-void Test<T>::foo()
-{
-    Instance instance;
-}
-
-/**** IWYU_SUMMARY
-***** IWYU_SUMMARY */
